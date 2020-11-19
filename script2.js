@@ -1,7 +1,6 @@
 
 // Assignment Code
 
-
 function generate() {
     var generateBtn = document.querySelector("#generate");
 
@@ -30,13 +29,19 @@ function generate() {
     }
     if (charConfirm) {
         allPossible = [...allPossible, ...characterArray];
+    } else {
+        alert("You must choose a parameter! Please try again")
     }
-
     var length = parseInt(prompt("How long do you want your password to be? Length needs to be between 8 - 128 characters long"));
     for (var i = 0; i < length; i++) {
         var randomCharc = Math.floor(Math.random() * Math.floor(allPossible.length));
         generatedPassword = generatedPassword + allPossible[randomCharc];
+
+        if (length < 8 || length > 128) {
+            return (null);
+        }
     }
+
     console.log(generatedPassword);
 
     document.getElementById("password").value = generatedPassword;
